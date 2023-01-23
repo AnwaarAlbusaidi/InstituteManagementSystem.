@@ -9,21 +9,15 @@ public class ManagmentSystem {
 
 	public class Department {
 		String depName;
-		ArrayList<Staff> depStaff = new ArrayList<Staff>();   
-		    public void addStaff(Staff staff) {
-		        depStaff.add(staff);
-		    }
-		    
-		    public void removeStaff(Staff staff) {
-		        depStaff.remove(staff);
-		    }
-	}
+		ArrayList<Staff> depStaff = new ArrayList<Staff>();
 
-	class CSDepartment extends Department {
-	}
+		public void addStaff(Staff staff) {
+			depStaff.add(staff);
+		}
 
-	class HRDepartment extends Department {
-
+		public void removeStaff(Staff staff) {
+			depStaff.remove(staff);
+		}
 	}
 
 	public class Student {
@@ -36,7 +30,7 @@ public class ManagmentSystem {
 			this.studentID = studentID;
 			this.studentEmail = studentEmail;
 		}
-	} 
+	}
 
 	public class Attendance {
 		ArrayList<Student> students = new ArrayList<Student>();
@@ -65,24 +59,27 @@ public class ManagmentSystem {
 		ArrayList<Student> enrollStudent = new ArrayList<Student>();
 		private boolean enrollmentStatus;
 
-		public Enrollment(Course course, ArrayList<Student> student, boolean enrollmentStatus) {
-			this.course = course;
-			this.enrollStudent = student ;
+		public Enrollment(Course courseID, ArrayList<Student> student, boolean enrollmentStatus) {
+			this.course = courseID;
+			this.enrollStudent = student;
 			this.enrollmentStatus = false;
 		}
-		 public boolean getEnrollmentStatus() {
-		        return this.enrollmentStatus;
-		    }
-		    public void setEnrollmentStatus(boolean status) {
-		        this.enrollmentStatus = status;
-		    }
-		    public void addStudent(Student student) {
-		        enrollStudent.add(student);
-		    }
-		    
-		    public void removeStudent(Student student) {
-		        enrollStudent.remove(student);
-		    }
+
+		public boolean getEnrollmentStatus() {
+			return this.enrollmentStatus;
+		}
+
+		public void setEnrollmentStatus(boolean status) {
+			this.enrollmentStatus = status;
+		}
+
+		public void addStudent(Student student) {
+			enrollStudent.add(student);
+		}
+
+		public void removeStudent(Student student) {
+			enrollStudent.remove(student);
+		}
 	}
 
 	public class Staff {
