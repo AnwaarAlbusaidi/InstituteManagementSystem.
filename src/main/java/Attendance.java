@@ -13,11 +13,6 @@ public class Attendance {
 			this.present = present;
 		}
 
-		public void markAttendance(boolean present) {
-			this.present = true;
-		}
-
-		public boolean getAttendance() {
-			return this.present;
+		public void markAttendance(boolean present,ArrayList<Student> student) {
 		}
 	}

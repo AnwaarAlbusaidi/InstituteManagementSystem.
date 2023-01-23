@@ -1,4 +1,4 @@
 
-public class ComputerScienceDepartment {
+public class ComputerScienceDepartment extends Department{
 
 }

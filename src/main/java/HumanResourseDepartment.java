@@ -1,4 +1,4 @@
 
-public class HumanResourseDepartment {
+public class HumanResourseDepartment extends Department {
 
 }
