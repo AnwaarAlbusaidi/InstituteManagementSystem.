@@ -1,3 +1,5 @@
+import java.sql.Date;
+import java.util.ArrayList;
 
 public class ManagmentSystem {
 
@@ -7,25 +9,21 @@ public class ManagmentSystem {
 
 	public class Department {
 		String depName;
-        Staff staff;
-		public Department(String depName,Staff staff) {
-			this.depName = depName;
-			this.staff = staff;
-		}
+		ArrayList<Staff> depStaff = new ArrayList<Staff>();   
+		    public void addStaff(Staff staff) {
+		        depStaff.add(staff);
+		    }
+		    
+		    public void removeStaff(Staff staff) {
+		        depStaff.remove(staff);
+		    }
 	}
 
 	class CSDepartment extends Department {
-
-		public CSDepartment(String depName, ManagmentSystem.Staff staff) {
-			super("CS Department", staff);
-		}
 	}
 
 	class HRDepartment extends Department {
 
-		public HRDepartment(String depName, ManagmentSystem.Staff staff) {
-			super("HR Department", staff);
-		}
 	}
 
 	public class Student {
@@ -38,23 +36,23 @@ public class ManagmentSystem {
 			this.studentID = studentID;
 			this.studentEmail = studentEmail;
 		}
+	} 
 
-	}
 	public class Attendance {
-		Student student;
+		ArrayList<Student> students = new ArrayList<Student>();
 		Course course;
 		Teacher teacher;
 		boolean present;
 
-		public Attendance(Student student, Course course, Teacher teacher, boolean present) {
-			this.student = student;
+		public Attendance(ArrayList<Student> student, Course course, Teacher teacher, boolean present) {
+			this.students = student;
 			this.course = course;
 			this.teacher = teacher;
 			this.present = present;
 		}
 
 		public void markAttendance(boolean present) {
-			this.present = present;
+			this.present = true;
 		}
 
 		public boolean getAttendance() {
@@ -62,44 +60,75 @@ public class ManagmentSystem {
 		}
 	}
 
-	public class Course {
-		String courseID;
-		Department Dep;
-
-		public Course(String courseID, Department Dep) {
-			this.courseID = courseID;
-			this.Dep = Dep;
-		}
-	}
-
 	public class Enrollment {
 		private Course course;
-		private Student student;
+		ArrayList<Student> enrollStudent = new ArrayList<Student>();
 		private boolean enrollmentStatus;
 
-		public Enrollment(Course course, Student student, boolean enrollmentStatus) {
+		public Enrollment(Course course, ArrayList<Student> student, boolean enrollmentStatus) {
 			this.course = course;
-			this.student = student;
+			this.enrollStudent = student ;
 			this.enrollmentStatus = false;
 		}
+		 public boolean getEnrollmentStatus() {
+		        return this.enrollmentStatus;
+		    }
+		    public void setEnrollmentStatus(boolean status) {
+		        this.enrollmentStatus = status;
+		    }
+		    public void addStudent(Student student) {
+		        enrollStudent.add(student);
+		    }
+		    
+		    public void removeStudent(Student student) {
+		        enrollStudent.remove(student);
+		    }
 	}
 
 	public class Staff {
 		String name;
 		int contact;
 		String email;
-		
-    public Staff(String stafName,int contact,String email)
-    {
-    	this.name = name;
-    	this.contact = contact;
-    	this.email = email;
-    }
+
+		public Staff(String stafName, int contact, String email) {
+			this.name = stafName;
+			this.contact = contact;
+			this.email = email;
+		}
 	}
-	
+
 	public class Teacher extends Staff {
 		public Teacher(String name, int contact, String email) {
 			super(name, contact, email);
 		}
 	}
+
+	public class Event {
+		Date date;
+		String time;
+		Teacher teacher;
+
+		public Event(Date date, String time, Teacher teacher) {
+			this.date = date;
+			this.time = time;
+			this.teacher = teacher;
+		}
+	}
+
+	public class Course extends Event {
+		ArrayList<Student> enrollStudents = new ArrayList<Student>();
+		Course courseID;
+
+		public Course(Date date, String time, ManagmentSystem.Teacher teacher) {
+			super(date, time, teacher);
+		}
+	}
+
+	public class WorkShop extends Event {
+
+		public WorkShop(Date date, String time, ManagmentSystem.Teacher teacher) {
+			super(date, time, teacher);
+		}
+	}
+
 }// End of class ManagmentSystem
