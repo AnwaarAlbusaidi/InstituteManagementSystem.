@@ -1,12 +1,11 @@
 import java.sql.Date;
-import java.util.ArrayList;
 
 
 public class Course extends Event {
-		ArrayList<Student> enrollStudents = new ArrayList<Student>();
 		Course courseID;
-
-		public Course(Date date, String time, Teacher teacher) {
+        
+		public Course(Date date, String time, Teacher teacher,Course courseID1) {
 			super(date, time, teacher);
+			this.courseID = courseID1;
 		}
 	}

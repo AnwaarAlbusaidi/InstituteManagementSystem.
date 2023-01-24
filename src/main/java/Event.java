@@ -11,3 +11,4 @@ public class Event {
 			this.staff = staff2;
 		}
 	}
+ 
